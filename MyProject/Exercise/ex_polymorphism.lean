@@ -9,7 +9,6 @@ def List.tailterm? {α : Type} (xs : List α) : Option α :=
 def primesUnder10 : List Nat := [2, 3, 5, 7]
 
 #eval primesUnder10.tailterm?
-
 -- Write a function that finds the first entry in a list that satisfies a given predicate.
 -- Start the definition with def List.findFirst? {α : Type} (xs : List α) (predicate : α → Bool) : Option α :=
 
