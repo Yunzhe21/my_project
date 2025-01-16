@@ -17,3 +17,13 @@ instance : HAppend (List α) (NonEmptyList α) (outParam (NonEmptyList α)) wher
 #eval ([] : List Nat) ++ (⟨1, [2, 3] ⟩ : NonEmptyList Nat)
 #eval [1, 2, 3] ++ (⟨4, [5, 6]⟩ : NonEmptyList Nat)
 #eval [1, 2, 3] ++ (⟨4, []⟩ : NonEmptyList Nat)
+
+-- Implement a Functor instance for the binary tree datatype.
+
+inductive BinTree (α : Type) where
+  | leaf : BinTree α
+  | branch : BinTree α → α → BinTree α → BinTree α
+
+def BinTree.map (f : α → β) : BinTree α → BinTree β
+  | leaf => leaf
+  | branch left parent right => branch (map f left) (f parent) (map f right)
